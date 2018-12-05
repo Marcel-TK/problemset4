@@ -1,0 +1,30 @@
+rom sqlalchemy import create_engine
+from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey
+from sqlalchemy import DateTime, Boolean
+from sqlalchemy import exists
+from sqlalchemy import sql, select, join, desc
+
+# Create a sqlite database
+#The dataset is on Absenteeism at a company
+#seeks to understand factors that contribute to absenteeism 
+#some factors revolves on the person social background and some other are ralated to the company and the 
+#The comapy would like to evaluate those factors and eventually address them
+#The ultimate goal is to reduce the company losses and increase profit which will result in 
+#increase efficiency.
+engine = create_engine('sqlite:////home/m.tkouete/pbset4f/Absenteeism.sqlite')
+
+
+metadata=MetaData()
+
+# Try to load Absentee info from database, if not there, create it.
+
+Absentee=Table('Absentee', metadata,
+             Column('ID', Integer, primary_key=True),
+             Column('Age', Integer),
+             Column('Education', Integer),
+             Column('Son', Integer),
+             Column('Social drinker',Boolean),
+             Column('Social smoker', Boolean),
+             Column('Pet', Integer),
+             Column('Weight', Integer),
+             Column('Height',Integer),
