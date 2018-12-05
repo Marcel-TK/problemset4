@@ -1,0 +1,41 @@
+
+
+#populate the table from the Absenteeism csv file
+#first read the file into a dict
+#second insert information in the table absentee and Occupation
+
+import csv
+data=open("/home/m.tkouete/pbset4f/Absenteeism_at_work.csv")
+for Line in data:
+reader = csv.DictReader(data)
+
+    ins=Absentee.insert().values(ID=Line['ID'],
+                             Age=Line['Age'],
+                             Education=Line['Education'],
+                             Son=Line['Son'],
+                             Social_drinker=Line['Social drinker'],
+                             Social_smoker=Line['Social smoker'],
+                             Pet=Line['Pet'],
+                             Weight=Line['Weight'],
+                             Height=Line['Height'],
+                             Body_mass_index=Line['Body mass index'],
+                            )
+data.close()
+
+data=open("/home/m.tkouete/pbset4f/Absenteeism_at_work.csv")
+reader = csv.DictReader(data)
+for Line in reader:
+    ins=Occupation.insert().values(Reason_for_absence=Line['Reason for absence'],
+                             ID=Line['ID'],
+                             Month_of_absence=Line['Month of absence'],
+                             Day_of_week=Line['Day of the week'],
+                             Season=Line['Seasson'],
+                             Transportation=Line['Transportation expense'],
+                             Distance_from_residence=Line['Distance from Residence to Work'],
+                             Service_time=Line['Service time'],
+                             Work_load=Line['Work load Average/day'],
+                             Target=Line['Hit target'],
+                             Disciplinary=Line['Disciplinary failure'],
+                             Hours=Line['Absenteeism time in hours'],
+                            )
+result = conn.execute(ins)
