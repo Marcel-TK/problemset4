@@ -1,0 +1,13 @@
+#This is the second part for question #3
+# Try to load Occupation info from database, if not there, create it.
+#this build a table of occupation that represents factors that are work related and that can contribute
+# to the worker absenteeism
+Occupation = Table ('Occupation', metadata,
+               Column('Reason for absence', Integer),
+               Column('ID', Integer, ForeignKey('Absentee.ID')),
+               Column('Month of absence', Integer),
+               Column('Day of the week', Integer),
+               Column('Seasson',Integer),
+               Column('Transportation expense', Integer),
+               Column('Distance from Residence to Work', Integer),
+               Column('Service time', Integer),
