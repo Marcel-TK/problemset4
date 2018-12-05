@@ -1,6 +1,6 @@
 
 
-#populate the table from the Absenteeism csv file
+#Table normalization then populate the table from the Absenteeism csv file
 #first read the file into a dict
 #second insert information in the table absentee and Occupation
 
