@@ -16,7 +16,8 @@ engine = create_engine('sqlite:////home/m.tkouete/pbset4f/Absenteeism.sqlite')
 
 metadata=MetaData()
 
-# Try to load Absentee info from database, if not there, create it.
+# Create tables: Absentee and Occupation
+#First table Absentee
 
 Absentee=Table('Absentee', metadata,
              Column('ID', Integer, primary_key=True),
