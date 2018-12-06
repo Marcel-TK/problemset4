@@ -1,50 +1,20 @@
 # problemset4
-class projectCompTools
-Attribute Information:
+Find a dataset that is currently in a table that you think could be turned into a multi-table database. This can be any kind of data that interests you.
 
-1. Individual identification (ID)
-2. Reason for absence (ICD).
-Absences attested by the International Code of Diseases (ICD) stratified into 21 categories (I to XXI) as follows:
+1) Describe the data. Write a metadata document that describes the source of the data, what the data are, what each column is, etc. See for example, this (Links to an external site.)Links to an external site. or this (Links to an external site.)Links to an external site.. (4 pts.)
 
-I Certain infectious and parasitic diseases  
-II Neoplasms  
-III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism  
-IV Endocrine, nutritional and metabolic diseases  
-V Mental and behavioural disorders  
-VI Diseases of the nervous system  
-VII Diseases of the eye and adnexa  
-VIII Diseases of the ear and mastoid process  
-IX Diseases of the circulatory system  
-X Diseases of the respiratory system  
-XI Diseases of the digestive system  
-XII Diseases of the skin and subcutaneous tissue  
-XIII Diseases of the musculoskeletal system and connective tissue  
-XIV Diseases of the genitourinary system  
-XV Pregnancy, childbirth and the puerperium  
-XVI Certain conditions originating in the perinatal period  
-XVII Congenital malformations, deformations and chromosomal abnormalities  
-XVIII Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified  
-XIX Injury, poisoning and certain other consequences of external causes  
-XX External causes of morbidity and mortality  
-XXI Factors influencing health status and contact with health services.
+ 
 
-And 7 categories without (CID) patient follow-up (22), medical consultation (23), blood donation (24), laboratory examination (25), unjustified absence (26), physiotherapy (27), dental consultation (28).
-3. Month of absence
-4. Day of the week (Monday (2), Tuesday (3), Wednesday (4), Thursday (5), Friday (6))
-5. Seasons
-6. Transportation expense
-7. Distance from Residence to Work (kilometers)
-8. Service time
-9. Age
-10. Work load Average/day 
-11. Hit target
-12. Disciplinary failure (yes=1; no=0)
-13. Education (high school (1), graduate (2), postgraduate (3), master and doctor (4))
-14. Son (number of children)
-15. Social drinker (yes=1; no=0)
-16. Social smoker (yes=1; no=0)
-17. Pet (number of pet)
-18. Weight
-19. Height
-20. Body mass index
-21. Absenteeism time in hours (target)
+2) Normalize the data. Write descriptions (words, drawings, or tables are fine--not code at this point) of the tables you could use to normalize these data. Describe why you chose the normalize the data in this manner. Include the column names, data types for each column, primary and foreign keys you would use. (8pts.)
+
+ 
+
+3) Either directly in sqlite or in Python with SQLAlchemy, write the code needed to define the tables above. (6pts.)
+
+ 
+
+4) Write the code to load the data into the database. (2pts) Note this is only 2 points! Don't spend a ton of time on this. If it turns into a headache, don't worry about it.
+
+ 
+
+Extra Credit: Find another dataset, briefly describe the dataset and columns. Briefly describe the tables you would use and how you would normalize these data. (2pts.) 
