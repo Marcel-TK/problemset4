@@ -1,14 +1,51 @@
 
+question #4
+#!/usr/bin/env python
+from sqlalchemy import create_engine
+from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey
+from sqlalchemy import DateTime, Boolean
+from sqlalchemy import exists
+from sqlalchemy import sql, select, join, desc
 
-#Table normalization then populate the table from the Absenteeism csv file
-#first read the file into a dict
-#second insert information in the table absentee and Occupation
+# Create a sqlite database
+engine = create_engine('sqlite:////home/m.tkouete/pbset4f/Absenteeism.sqlite')
+
+conn=engine.connect()
+metadata=MetaData()
+
+# Try to load Absentee table into the database
+
+Absentee=Table('Absentee', metadata,
+             Column('ID', Integer, primary_key=True),
+             Column('Age', Integer),
+             Column('Education', Integer),
+             Column('Son', Integer),
+             Column('Social_drinker',Integer),
+             Column('Social_smoker', Integer),
+             Column('Pet', Integer),
+             Column('Weight', Integer),
+             Column('Height',Integer),
+             Column('Body_mass_index',Integer),
+            )
+
+# Try to load Occupation table into the database.
+Occupation = Table ('Occupation', metadata,
+               Column('Reason_for_absence', Integer),
+               Column('ID', Integer, ForeignKey('Absentee.ID')),
+               Column('Month_of_absence', Integer),
+               Column('Day_of_the_week', Integer),
+               Column('Seasons',Integer),
+               Column('Transportation_expense', Integer),
+               Column('Distance_from_residence', Integer, primary_key=True),
+               Column('Service_time', Integer),
+               Column('Work_load', Integer)
+              )
+metadata.create_all(engine)
 
 import csv
 data=open("/home/m.tkouete/pbset4f/Absenteeism_at_work.csv")
-for Line in data:
 reader = csv.DictReader(data)
-
+for Line in reader:
     ins=Absentee.insert().values(ID=Line['ID'],
                              Age=Line['Age'],
                              Education=Line['Education'],
@@ -20,22 +57,17 @@ reader = csv.DictReader(data)
                              Height=Line['Height'],
                              Body_mass_index=Line['Body mass index'],
                             )
-data.close()
-
-data=open("/home/m.tkouete/pbset4f/Absenteeism_at_work.csv")
-reader = csv.DictReader(data)
-for Line in reader:
     ins=Occupation.insert().values(Reason_for_absence=Line['Reason for absence'],
                              ID=Line['ID'],
                              Month_of_absence=Line['Month of absence'],
                              Day_of_week=Line['Day of the week'],
-                             Season=Line['Seasson'],
+                             Seasons=Line['Seasons'],
                              Transportation=Line['Transportation expense'],
                              Distance_from_residence=Line['Distance from Residence to Work'],
                              Service_time=Line['Service time'],
-                             Work_load=Line['Work load Average/day'],
+                             Work_load=Line['Work load Average_day'],
                              Target=Line['Hit target'],
                              Disciplinary=Line['Disciplinary failure'],
-                             Hours=Line['Absenteeism time in hours'],
+                             Hours_missed=Line['Absenteeism time in hours'],
                             )
 result = conn.execute(ins)
