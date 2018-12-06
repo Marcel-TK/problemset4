@@ -1,23 +1,18 @@
-rom sqlalchemy import create_engine
+Question #3 The bellow codes have been “committed” to my github repository under problem set4 (https://github.com/Marcel-TK/problemset4)
+#Call some packages
+from sqlalchemy import create_engine
 from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey
 from sqlalchemy import DateTime, Boolean
 from sqlalchemy import exists
 from sqlalchemy import sql, select, join, desc
 
-# Create a sqlite database
-#The dataset is on Absenteeism at a company
-#seeks to understand factors that contribute to absenteeism 
-#some factors revolves on the person social background and some other are ralated to the company and the 
-#The comapy would like to evaluate those factors and eventually address them
-#The ultimate goal is to reduce the company losses and increase profit which will result in 
-#increase efficiency.
+# Create a sqlite database called Absenteeism.sqlite
 engine = create_engine('sqlite:////home/m.tkouete/pbset4f/Absenteeism.sqlite')
 
 
 metadata=MetaData()
 
-# Create tables: Absentee and Occupation
-#First table Absentee
+# Define a table “Absentee”
 
 Absentee=Table('Absentee', metadata,
              Column('ID', Integer, primary_key=True),
@@ -29,3 +24,23 @@ Absentee=Table('Absentee', metadata,
              Column('Pet', Integer),
              Column('Weight', Integer),
              Column('Height',Integer),
+            Column('Body mass index',Integer),
+            )
+
+# Define a table Occupation
+Occupation = Table ('Occupation', metadata,
+               Column('Reason for absence', Integer),
+               Column('ID', Integer, ForeignKey('Absentee.ID')),
+               Column('Month of absence', Integer),
+               Column('Day of the week', Integer),
+               Column('Seasson',Integer),
+               Column('Transportation expense', Integer),
+               Column('Distance from Residence to Work', Integer),
+               Column('Service time', Integer),
+               Column('Work load Average/day',Integer),
+               Column('Hit target',Integer),
+               Column('Disciplinary failure',Boolean),
+               Column('Absenteeism time in hours',Integer),
+              )
+
+metadata.create_all(engine)
